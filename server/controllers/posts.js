@@ -1,7 +1,17 @@
+import PostMessage from "../models/PostMessage.js";
+
 export const getPosts = (req, res) => {
-    res.send("Welcome to the adventure!!")
+    try {
+        
+    } catch (error) {
+        
+    }
 };
 
 export const createPost = (req, res) => {
-    res.send("Post creation")
+    try {
+        
+    } catch (error) {
+        
+    }
 };
