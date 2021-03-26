@@ -16,6 +16,15 @@ app.get("/", (req, res) => {
 // routes
 app.use("/posts", postRoutes);
 
+// error handling
+app.use(function errorHandler(err, req, res, next) {
+  res.status(err.status || 500).send({
+    error: {
+      message: err.message,
+    },
+  });
+});
+
 // generate setup
 app.use(express.json({ limit: '30mb', extended: true}));
 app.use(express.urlencoded({ limit: '30mb, extended: true' }));
