@@ -2,10 +2,19 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import postRoutes from './routes/posts.js';
 
 const app = express();
 
 dotenv.config();
+
+// available routes
+app.get("/", (req, res) => {
+    res.send("Hello Wooorld");
+});
+
+// routes
+app.use("/posts", postRoutes);
 
 // generate setup
 app.use(express.json({ limit: '30mb', extended: true}));
