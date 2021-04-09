@@ -6,3 +6,6 @@ solutions
 .env.development.local
 .env.test.local
 .env.production.local
+api
+reducers
+actions
