@@ -8,6 +8,12 @@ const app = express();
 
 dotenv.config();
 
+// generate setup
+app.use(express.json({ limit: '30mb', extended: true}));
+app.use(express.urlencoded({ limit: '30mb, extended: true' }));
+app.use(cors());
+
+
 // available routes
 app.get("/", (req, res) => {
     res.send("Hello Wooorld");
@@ -24,11 +30,6 @@ app.use(function errorHandler(err, req, res, next) {
     },
   });
 });
-
-// generate setup
-app.use(express.json({ limit: '30mb', extended: true}));
-app.use(express.urlencoded({ limit: '30mb, extended: true' }));
-app.use(cors());
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
