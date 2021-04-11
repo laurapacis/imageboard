@@ -47,7 +47,7 @@ function Form({currentId, setCurrentId}) {
     return (
         <Paper className={classes.paper}>
             <form
-                autocomplete='off'
+                autoComplete='off'
                 noValidate
                 className={`${classes.root} ${classes.form}`}
                 onSubmit={handleSubmit}
@@ -83,7 +83,7 @@ function Form({currentId, setCurrentId}) {
                     lable='Tags'
                     fullWidth
                     value={postData.tags}
-                    onChange={(e) => setPostData({...postData, tags: e.target.value})}
+                    onChange={(e) => setPostData({...postData, tags: e.target.value.split(',')})}
                 />
                 <div className={classes.fileInput}>
                     <FileBase
@@ -93,7 +93,7 @@ function Form({currentId, setCurrentId}) {
                     />
                     <Button
                         className={classes.buttonSubmit} 
-                        variant='container' 
+                        variant='contained' 
                         color='primary' 
                         size='large' 
                         type='submit'
