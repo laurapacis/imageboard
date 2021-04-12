@@ -13,24 +13,6 @@ app.use(express.json({ limit: '30mb', extended: true}));
 app.use(express.urlencoded({ limit: '30mb, extended: true' }));
 app.use(cors());
 
-
-// available routes
-app.get("/", (req, res) => {
-    res.send("Hello Wooorld");
-});
-
-// routes
-app.use("/posts", postRoutes);
-
-// error handling
-app.use(function errorHandler(err, req, res, next) {
-  res.status(err.status || 500).send({
-    error: {
-      message: err.message,
-    },
-  });
-});
-
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
@@ -56,3 +38,21 @@ mongoose.connect(connectionStr, {
     .catch((error) => {
         console.log("[ERROR] DB Connection failed", error);
     });
+
+
+// available routes
+app.get("/", (req, res) => {
+    res.send("Hello Wooorld");
+});
+
+// routes
+app.use("/posts", postRoutes);
+
+// error handling
+app.use(function errorHandler(err, req, res, next) {
+  res.status(err.status || 5000).send({
+    error: {
+      message: err.message,
+    },
+  });
+});

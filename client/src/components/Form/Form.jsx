@@ -16,34 +16,37 @@ function Form({currentId, setCurrentId}) {
     });
 
     const post = useSelector((state) => currentId ? state.posts.find((post) => post._id === currentId) : null);
-    const classes = useStyles();
     const dispatch = useDispatch();
+    const classes = useStyles();
 
     useEffect(() => {
         if (post) setPostData(post);
     }, [post]);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (currentId) {
-            dispatch(updatePost(currentId, postData));
-        } else {
-            dispatch(createPost(postData));
-        }
-        clear();
-    }
-
+        
     const clear = () => {
-        setCurrentId(null);
+        setCurrentId(0);
         setPostData({
             creator: '',
             title: '',
             message: '',
             tags: '',
             selectedFile: ''
-    })
-    }
+        })
+    };
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (currentId) {
+            dispatch(createPost(postData));
+            clear();
+        } else {
+            dispatch(updatePost(currentId, postData));
+            clear();
+        }
+    };
+
+   
     return (
         <Paper className={classes.paper}>
             <form
@@ -108,7 +111,7 @@ function Form({currentId, setCurrentId}) {
                         onClick={clear}
                         fullWidth
                     >
-                        Submit
+                        Clear
                     </Button>
                 </div>
             </form>
