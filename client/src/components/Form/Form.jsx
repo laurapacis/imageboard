@@ -37,7 +37,7 @@ function Form({currentId, setCurrentId}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (currentId) {
+        if (!currentId) {
             dispatch(createPost(postData));
             clear();
         } else {
@@ -59,7 +59,7 @@ function Form({currentId, setCurrentId}) {
                 <TextField
                     name='creator'
                     variant='outlined'
-                    lable='Creator'
+                    label='Creator'
                     fullWidth
                     value={postData.creator}
                     onChange={(e) => setPostData({...postData, creator: e.target.value})}
@@ -67,7 +67,7 @@ function Form({currentId, setCurrentId}) {
                 <TextField
                     name='title'
                     variant='outlined'
-                    lable='Title'
+                    label='Title'
                     fullWidth
                     value={postData.title}
                     onChange={(e) => setPostData({...postData, title: e.target.value})}
@@ -75,7 +75,7 @@ function Form({currentId, setCurrentId}) {
                 <TextField
                     name='message'
                     variant='outlined'
-                    lable='Message'
+                    label='Message'
                     fullWidth
                     value={postData.message}
                     onChange={(e) => setPostData({...postData, message: e.target.value})}
@@ -83,7 +83,7 @@ function Form({currentId, setCurrentId}) {
                 <TextField
                     name='tags'
                     variant='outlined'
-                    lable='Tags'
+                    label='Tags'
                     fullWidth
                     value={postData.tags}
                     onChange={(e) => setPostData({...postData, tags: e.target.value.split(',')})}
